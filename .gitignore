@@ -1,0 +1,5 @@
+**/.gitignore
+**/.gitattributes
+**/.mvn
+**/mvnw.cmd
+**/HELP.md
