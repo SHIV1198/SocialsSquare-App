@@ -9,5 +9,4 @@ public class SocialsSquareApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SocialsSquareApplication.class, args);
 	}
-//sdasd
 }
