@@ -1,6 +1,7 @@
 package com.socials.square.dao;
 
 import com.socials.square.models.Post;
+import com.socials.square.models.PostsMessageDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,5 +34,10 @@ public class PostsDataAccessService implements PostsDAO{
     @Override
     public void createNewPost(Post newPost) {
         postsRepository.save(newPost);
+    }
+
+    @Override
+    public void deletePost(PostsMessageDTO post) {
+        postsRepository.deleteByUserIdAndContent(post.userId(), post.content());
     }
 }
