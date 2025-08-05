@@ -1,5 +1,6 @@
 package com.socials.square.service;
 
+import com.socials.square.dao.PostsDAO;
 import com.socials.square.dao.PostsRepository;
 import com.socials.square.models.Post;
 import com.socials.square.models.PostsMessageDTO;
@@ -13,11 +14,14 @@ import java.util.stream.Collectors;
 @Service
 public class PostsService {
 
-    @Autowired
-    PostsRepository postsRepository;
+    private final PostsDAO postsDAO;
+
+    public PostsService(PostsDAO postsDAO) {
+        this.postsDAO = postsDAO;
+    }
 
     public List<PostsMessageDTO> getAllPostsByUserId(String userId) {
-        List<Post> posts = postsRepository.findAllByUserId(userId);
+        List<Post> posts = postsDAO.findAllPostsByUserId(userId);
         List<PostsMessageDTO> userPosts = posts.stream()
                 .map(post -> new PostsMessageDTO(post.getUserId(), post.getContent()))
                 .collect(Collectors.toList());
@@ -30,6 +34,6 @@ public class PostsService {
                 .userId(post.userId())
                 .content(post.content())
                 .build();
-        postsRepository.save(newPost);
+        postsDAO.createNewPost(newPost);
     }
 }

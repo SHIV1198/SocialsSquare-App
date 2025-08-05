@@ -20,7 +20,7 @@ public class Controller {
     public String index() {
         return "HI! There, Welcome to SocialsSquare";
     }
-    @ResponseBody
+
     @GetMapping("/posts/{userId}")
     public List<PostsMessageDTO> getAllPostsOfUser(String userId) {
         List<PostsMessageDTO> allPostsByUserId = postsService.getAllPostsByUserId(userId);
