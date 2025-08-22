@@ -5,11 +5,14 @@ import com.socials.square.service.PostsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController("/v1")
+@RestController()
+@RequestMapping("/socials/v1")
 public class Controller {
 
     public final Logger logger = LoggerFactory.getLogger(Controller.class);
@@ -27,11 +30,12 @@ public class Controller {
 
 
     @GetMapping("/posts/{userId}")
-    public List<PostsMessageDTO> getAllPostsOfUser(String userId) {
+    public List<PostsMessageDTO> getAllPostsOfUser(@PathVariable String userId) {
         List<PostsMessageDTO> allPostsByUserId = postsService.getAllPostsByUserId(userId);
         return allPostsByUserId;
     }
 
+    @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/post/{userId}")
     public void createPost(@RequestBody PostsMessageDTO post) {
         postsService.createPostByUser(post);
