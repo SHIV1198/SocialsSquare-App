@@ -16,7 +16,7 @@ import java.util.List;
  *
  * In future if you have different implementation for DB operations, just create a new DAO class and mark that as Primary
  */
-@Repository
+@Repository("JPA_Dao")
 public class PostsDataAccessService implements PostsDAO{
 
     private final PostsRepository postsRepository;

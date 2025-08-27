@@ -7,6 +7,7 @@ import com.socials.square.models.PostsMessageDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,7 +20,7 @@ public class PostsService {
 
     private final PostsDAO postsDAO;
 
-    public PostsService(PostsDAO postsDAO) {
+    public PostsService(@Qualifier("JPA_Dao") PostsDAO postsDAO) {
         this.postsDAO = postsDAO;
     }
 

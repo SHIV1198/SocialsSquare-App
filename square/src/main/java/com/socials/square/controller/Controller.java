@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/v1")
 @RestController()
 @RequestMapping("/socials/v1")
 public class Controller {
